@@ -17,7 +17,7 @@ and
 
 -------------
 
-###How to run the app locally:
+### How to run the app locally:
 
 1. Run ```npm install``` or ```yarn install```  to install all needed dependencies on your terminal.
 6. In the other command prompt run ```npm start``` or ```yarn start```. These commands do the same thing: Starting your server to host the web app.
