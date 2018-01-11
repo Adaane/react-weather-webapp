@@ -7,7 +7,7 @@ class CapitalList extends Component {
     super(props);
     this.state = {
       capitalCityData : [],
-      loading: true,
+      loading: true
     }
     this.makeRequest = this.makeRequest.bind(this);
   }
@@ -43,7 +43,13 @@ class CapitalList extends Component {
       ? <h1 className='weather-header'>Un instant</h1>
       : <div>
           <h1 className='header'>Température dans les captiales européennes</h1>
-          <CapitalItem />
+            <div className="capitalList-container">
+          {
+            this.state.capitalCityData.map(function(listItem){
+              return <CapitalItem capital={listItem.capital} flag={listItem.flag} key={listItem.alpha3Code}/>
+            },this)
+          }
+            </div>
         </div>
   }
 }
