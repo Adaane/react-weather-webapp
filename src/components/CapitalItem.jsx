@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import DayItem from '../components/DayItem';
 import api from '../utils/api';
+import DayItem from '../components/DayItem';
 
 
 class CapitalItem extends Component {
@@ -8,7 +8,7 @@ class CapitalItem extends Component {
     super(props);
     this.state = {
       weatherInfo: [],
-      loading : true
+      loading    : true
     }
 
     this.makeWeatherRequest = this.makeWeatherRequest.bind(this);
@@ -33,7 +33,7 @@ class CapitalItem extends Component {
       .then(function(res) {
         this.setState(function() {
           return {
-            loading: false,
+            loading    : false,
             weatherInfo: res
           }
         })
@@ -41,12 +41,20 @@ class CapitalItem extends Component {
   }
 
   render() {
-      return this.state.loading === true
-      ? <h2 className="subheader">Chargement..</h2>
+    return this.state.loading === true
+      ? <h2 className="loading">Chargement..</h2>
       : <div className='capitalItem-container'>
-          <img className='flag' src={this.props.flag} alt="flag"/>
+          <img 
+            className ='flag' 
+            src       ={this.props.flag} 
+            alt="flag"/>
           <h1 className="subheader">{this.props.capital}</h1>
-          <DayItem temp={this.state.weatherInfo.main.temp} icon={this.state.weatherInfo.weather[0].icon} />
+          <DayItem 
+            temp             ={this.state.weatherInfo.main.temp} 
+            tempMin          ={this.state.weatherInfo.main.temp_min} 
+            tempMax          ={this.state.weatherInfo.main.temp_max} 
+            weatherCondition ={this.state.weatherInfo.weather[0].description}
+            icon             ={this.state.weatherInfo.weather[0].icon} />
         </div>
   }
 }

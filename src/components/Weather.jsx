@@ -1,8 +1,8 @@
 import React, { Component }from 'react';
-import api from '../utils/api';
-import DayItem  from '../components/DayItem';
 import queryString from 'query-string';
+import api from '../utils/api';
 import helpers from '../utils/helpers';
+import DayItem  from '../components/DayItem';
 
 
 class Weather extends Component {
@@ -10,11 +10,9 @@ class Weather extends Component {
     super(props);
     this.state = {
       weatherData: [],
-      loading   : true
+      loading    : true
     }
-
     this.makeRequest = this.makeRequest.bind(this);
-
   }
 
   componentDidMount() {
@@ -28,8 +26,6 @@ class Weather extends Component {
   }
 
 
-
-// Fais la reqûette
   makeRequest(city){
     this.setState(function(){
       return {
@@ -41,26 +37,26 @@ class Weather extends Component {
       .then(function(res) {
         this.setState(function() {
           return {
-            loading: false,
+            loading    : false,
             weatherData: res
           }
         })
       }.bind(this))
   }
 
-// Gère le clique pour les détails mais pas utiles pour l'instant
-  // handleClick(city){
-
-  // }
-
-
   render() {
     return this.state.loading === true
-      ? <h1 className='weather-header'>Chargement..</h1>
+      ? <h1 className='loading'>Chargement..</h1>
       : <div>
           <h1 className='weather-header'>{this.city}</h1>
           <div className='weather-container'>
-            <DayItem temp={this.state.weatherData.main.temp} day={helpers.getDate(this.state.weatherData.dt)} icon={this.state.weatherData.weather[0].icon} />
+            <DayItem 
+              temp             ={this.state.weatherData.main.temp} 
+              tempMin          ={this.state.weatherData.main.temp_min} 
+              tempMax          ={this.state.weatherData.main.temp_max} 
+              weatherCondition ={this.state.weatherData.weather[0].description}
+              day              ={helpers.getDate(this.state.weatherData.dt)} 
+              icon             ={this.state.weatherData.weather[0].icon} />
           </div>
         </div>
   }
