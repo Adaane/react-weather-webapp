@@ -9,7 +9,14 @@ class Home extends Component {
         className="home-container"> 
         <h2 
           className="header">Enter a Capital</h2>
-        <Capital />
+        <Capital 
+          onSubmitCapital={function(city, props){
+            props.history.push({
+              pathname: '/weather',
+              search: '?city=' + city
+            });
+          }}
+          capital={'Paris'} />
       </div>
     )
   }

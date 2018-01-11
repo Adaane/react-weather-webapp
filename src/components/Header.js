@@ -7,8 +7,15 @@ class Header extends Component {
   render() {
     return (
       <div className="navbar">
-        <h1>App.js Header</h1>
-        <Capital />
+        <h1>Application météo</h1>
+        <Capital 
+          onSubmitCapital={function(city, props){
+            props.history.push({
+              pathname: '/weather',
+              search: '?city=' + city
+            });
+        }}
+        capital={'Paris'} />
       </div>
     );
   }
