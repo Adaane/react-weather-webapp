@@ -1,6 +1,5 @@
 # React Weather Web Application
 **Find the current weather any city on europe and earth with this web app**
-#### [Live Demo](https://adaane.github.io/react-weather-webapp/) 
 
 -------------
 
