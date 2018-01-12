@@ -54,9 +54,6 @@ class Capital extends Component {
   }
 }
 
-Capital.defaultProps = {
-  direction: 'column'
-}
 
 Capital.propTypes = {
   direction: PropTypes.string,
